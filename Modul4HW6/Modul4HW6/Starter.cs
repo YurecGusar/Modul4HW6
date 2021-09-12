@@ -10,7 +10,7 @@ namespace Modul4HW6
     {
         public void Run()
         {
-            Console.WriteLine("Main");
+            Console.WriteLine("Develop");
         }
     }
 }
