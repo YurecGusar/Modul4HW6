@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Modul4HW6.Services;
 
 namespace Modul4HW6
 {
@@ -10,7 +11,8 @@ namespace Modul4HW6
     {
         public void Run()
         {
-            Console.WriteLine("Develop");
+            var config = new AppConfigService();
+            Console.WriteLine(config.ConnectionString);
         }
     }
 }
