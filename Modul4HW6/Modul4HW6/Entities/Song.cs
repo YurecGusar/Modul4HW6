@@ -14,6 +14,6 @@ namespace Modul4HW6.Entities
         public virtual DateTime ReleasedDate { get; set; }
         public virtual int GanreId { get; set; }
         public virtual Ganre Ganre { get; set; }
-        public virtual List<Artist> Artists { get; set; } = new List<Artist>();
+        public virtual List<ArtistsSongs> Artists { get; set; } = new List<ArtistsSongs>();
     }
 }
