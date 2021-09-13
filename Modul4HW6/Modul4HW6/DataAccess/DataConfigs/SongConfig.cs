@@ -25,9 +25,9 @@ namespace Modul4HW6.DataAccess.DataConfigs
             builder.Property(x => x.Duration)
                 .HasColumnType("float")
                 .IsRequired();
-            builder.HasOne(x => x.Ganre)
+            builder.HasOne(x => x.Genre)
                 .WithMany(x => x.Songs)
-                .HasForeignKey(x => x.GanreId)
+                .HasForeignKey(x => x.GenreId)
                 .OnDelete(DeleteBehavior.Cascade)
                 .IsRequired();
 
@@ -38,7 +38,7 @@ namespace Modul4HW6.DataAccess.DataConfigs
                     Id = 1,
                     Duration = 2.54d,
                     ReleasedDate = new DateTime(2016, 4, 5),
-                    GanreId = 1,
+                    GenreId = 1,
                     Title = "One Dance"
                 },
 
@@ -47,7 +47,7 @@ namespace Modul4HW6.DataAccess.DataConfigs
                     Id = 2,
                     Duration = 4.38d,
                     ReleasedDate = new DateTime(2009, 11, 28),
-                    GanreId = 1,
+                    GenreId = 1,
                     Title = "Empire State Of Mind"
                 },
 
@@ -56,7 +56,7 @@ namespace Modul4HW6.DataAccess.DataConfigs
                     Id = 3,
                     Duration = 4.15d,
                     ReleasedDate = new DateTime(2010, 1, 25),
-                    GanreId = 1,
+                    GenreId = 1,
                     Title = "Young Forever"
                 },
 
@@ -65,7 +65,7 @@ namespace Modul4HW6.DataAccess.DataConfigs
                     Id = 4,
                     Duration = 5.47d,
                     ReleasedDate = new DateTime(2018, 8, 27),
-                    GanreId = 1,
+                    GenreId = 1,
                     Title = "Marvins Room"
                 },
 
@@ -74,7 +74,7 @@ namespace Modul4HW6.DataAccess.DataConfigs
                     Id = 5,
                     Duration = 4.19d,
                     ReleasedDate = new DateTime(1987, 8, 31),
-                    GanreId = 2,
+                    GenreId = 2,
                     Title = "Bad"
                 },
 
@@ -83,7 +83,7 @@ namespace Modul4HW6.DataAccess.DataConfigs
                     Id = 6,
                     Duration = 4.53d,
                     ReleasedDate = new DateTime(1982, 2, 13),
-                    GanreId = 2,
+                    GenreId = 2,
                     Title = "Billie Jean"
                 },
 
@@ -92,7 +92,7 @@ namespace Modul4HW6.DataAccess.DataConfigs
                     Id = 7,
                     Duration = 2.54d,
                     ReleasedDate = new DateTime(1989, 4, 5),
-                    GanreId = 2,
+                    GenreId = 2,
                     Title = "Sacrifice"
                 },
 
@@ -101,7 +101,7 @@ namespace Modul4HW6.DataAccess.DataConfigs
                     Id = 8,
                     Duration = 6.46d,
                     ReleasedDate = new DateTime(1971, 4, 5),
-                    GanreId = 2,
+                    GenreId = 2,
                     Title = "Tiny Dancer"
                 },
 
@@ -110,7 +110,7 @@ namespace Modul4HW6.DataAccess.DataConfigs
                     Id = 9,
                     Duration = 4.15d,
                     ReleasedDate = new DateTime(2018, 10, 5),
-                    GanreId = 1,
+                    GenreId = 1,
                     Title = "Venom"
                 },
 
@@ -119,8 +119,17 @@ namespace Modul4HW6.DataAccess.DataConfigs
                     Id = 10,
                     Duration = 4.17d,
                     ReleasedDate = new DateTime(2009, 12, 25),
-                    GanreId = 1,
+                    GenreId = 1,
                     Title = "Mockingbird"
+                },
+
+                new Song()
+                {
+                    Id = 11,
+                    Duration = 3.16d,
+                    ReleasedDate = new DateTime(1971, 11, 1),
+                    GenreId = 5,
+                    Title = "Banks of the Ohio"
                 }
             });
         }

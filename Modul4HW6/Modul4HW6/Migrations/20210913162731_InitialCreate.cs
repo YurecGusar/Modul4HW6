@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Modul4HW6.DataAccess.Migrations
+namespace Modul4HW6.Migrations
 {
     public partial class InitialCreate : Migration
     {
@@ -46,14 +46,14 @@ namespace Modul4HW6.DataAccess.Migrations
                     Title = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
                     Duration = table.Column<double>(type: "float", nullable: false),
                     ReleasedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    GanreId = table.Column<int>(type: "int", nullable: false)
+                    GenreId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Songs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Songs_Ganres_GanreId",
-                        column: x => x.GanreId,
+                        name: "FK_Songs_Ganres_GenreId",
+                        column: x => x.GenreId,
                         principalTable: "Ganres",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -66,7 +66,7 @@ namespace Modul4HW6.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SongsId = table.Column<int>(type: "int", nullable: false),
-                    ArtistsId = table.Column<int>(type: "int", nullable: false)
+                    ArtistsId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -96,9 +96,9 @@ namespace Modul4HW6.DataAccess.Migrations
                 column: "SongsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Songs_GanreId",
+                name: "IX_Songs_GenreId",
                 table: "Songs",
-                column: "GanreId");
+                column: "GenreId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

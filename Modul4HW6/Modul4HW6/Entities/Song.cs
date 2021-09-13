@@ -12,8 +12,8 @@ namespace Modul4HW6.Entities
         public virtual string Title { get; set; }
         public virtual double Duration { get; set; }
         public virtual DateTime ReleasedDate { get; set; }
-        public virtual int GanreId { get; set; }
-        public virtual Ganre Ganre { get; set; }
+        public virtual int GenreId { get; set; }
+        public virtual Genre Genre { get; set; }
         public virtual List<ArtistsSongs> Artists { get; set; } = new List<ArtistsSongs>();
     }
 }

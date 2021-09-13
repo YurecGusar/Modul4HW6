@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Modul4HW6.DataAccess;
 
-namespace Modul4HW6.DataAccess.Migrations
+namespace Modul4HW6.Migrations
 {
     [DbContext(typeof(Modul4HW6DBContext))]
-    [Migration("20210913140202_TestValues")]
+    [Migration("20210913163420_TestValues")]
     partial class TestValues
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -108,7 +108,7 @@ namespace Modul4HW6.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ArtistsId")
+                    b.Property<int?>("ArtistsId")
                         .HasColumnType("int");
 
                     b.Property<int>("SongsId")
@@ -182,10 +182,15 @@ namespace Modul4HW6.DataAccess.Migrations
                             Id = 10,
                             ArtistsId = 3,
                             SongsId = 10
+                        },
+                        new
+                        {
+                            Id = 11,
+                            SongsId = 11
                         });
                 });
 
-            modelBuilder.Entity("Modul4HW6.Entities.Ganre", b =>
+            modelBuilder.Entity("Modul4HW6.Entities.Genre", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -225,7 +230,7 @@ namespace Modul4HW6.DataAccess.Migrations
                         new
                         {
                             Id = 5,
-                            Title = "Country"
+                            Title = "Folk songs"
                         });
                 });
 
@@ -239,7 +244,7 @@ namespace Modul4HW6.DataAccess.Migrations
                     b.Property<double>("Duration")
                         .HasColumnType("float");
 
-                    b.Property<int>("GanreId")
+                    b.Property<int>("GenreId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ReleasedDate")
@@ -252,7 +257,7 @@ namespace Modul4HW6.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GanreId");
+                    b.HasIndex("GenreId");
 
                     b.ToTable("Songs");
 
@@ -261,7 +266,7 @@ namespace Modul4HW6.DataAccess.Migrations
                         {
                             Id = 1,
                             Duration = 2.54,
-                            GanreId = 1,
+                            GenreId = 1,
                             ReleasedDate = new DateTime(2016, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "One Dance"
                         },
@@ -269,7 +274,7 @@ namespace Modul4HW6.DataAccess.Migrations
                         {
                             Id = 2,
                             Duration = 4.3799999999999999,
-                            GanreId = 1,
+                            GenreId = 1,
                             ReleasedDate = new DateTime(2009, 11, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Empire State Of Mind"
                         },
@@ -277,7 +282,7 @@ namespace Modul4HW6.DataAccess.Migrations
                         {
                             Id = 3,
                             Duration = 4.1500000000000004,
-                            GanreId = 1,
+                            GenreId = 1,
                             ReleasedDate = new DateTime(2010, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Young Forever"
                         },
@@ -285,7 +290,7 @@ namespace Modul4HW6.DataAccess.Migrations
                         {
                             Id = 4,
                             Duration = 5.4699999999999998,
-                            GanreId = 1,
+                            GenreId = 1,
                             ReleasedDate = new DateTime(2018, 8, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Marvins Room"
                         },
@@ -293,7 +298,7 @@ namespace Modul4HW6.DataAccess.Migrations
                         {
                             Id = 5,
                             Duration = 4.1900000000000004,
-                            GanreId = 2,
+                            GenreId = 2,
                             ReleasedDate = new DateTime(1987, 8, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Bad"
                         },
@@ -301,7 +306,7 @@ namespace Modul4HW6.DataAccess.Migrations
                         {
                             Id = 6,
                             Duration = 4.5300000000000002,
-                            GanreId = 2,
+                            GenreId = 2,
                             ReleasedDate = new DateTime(1982, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Billie Jean"
                         },
@@ -309,7 +314,7 @@ namespace Modul4HW6.DataAccess.Migrations
                         {
                             Id = 7,
                             Duration = 2.54,
-                            GanreId = 2,
+                            GenreId = 2,
                             ReleasedDate = new DateTime(1989, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Sacrifice"
                         },
@@ -317,7 +322,7 @@ namespace Modul4HW6.DataAccess.Migrations
                         {
                             Id = 8,
                             Duration = 6.46,
-                            GanreId = 2,
+                            GenreId = 2,
                             ReleasedDate = new DateTime(1971, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Tiny Dancer"
                         },
@@ -325,7 +330,7 @@ namespace Modul4HW6.DataAccess.Migrations
                         {
                             Id = 9,
                             Duration = 4.1500000000000004,
-                            GanreId = 1,
+                            GenreId = 1,
                             ReleasedDate = new DateTime(2018, 10, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Venom"
                         },
@@ -333,9 +338,17 @@ namespace Modul4HW6.DataAccess.Migrations
                         {
                             Id = 10,
                             Duration = 4.1699999999999999,
-                            GanreId = 1,
+                            GenreId = 1,
                             ReleasedDate = new DateTime(2009, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Mockingbird"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Duration = 3.1600000000000001,
+                            GenreId = 5,
+                            ReleasedDate = new DateTime(1971, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Banks of the Ohio"
                         });
                 });
 
@@ -344,8 +357,7 @@ namespace Modul4HW6.DataAccess.Migrations
                     b.HasOne("Modul4HW6.Entities.Artist", "Artist")
                         .WithMany("Songs")
                         .HasForeignKey("ArtistsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Modul4HW6.Entities.Song", "Song")
                         .WithMany("Artists")
@@ -360,13 +372,13 @@ namespace Modul4HW6.DataAccess.Migrations
 
             modelBuilder.Entity("Modul4HW6.Entities.Song", b =>
                 {
-                    b.HasOne("Modul4HW6.Entities.Ganre", "Ganre")
+                    b.HasOne("Modul4HW6.Entities.Genre", "Genre")
                         .WithMany("Songs")
-                        .HasForeignKey("GanreId")
+                        .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Ganre");
+                    b.Navigation("Genre");
                 });
 
             modelBuilder.Entity("Modul4HW6.Entities.Artist", b =>
@@ -374,7 +386,7 @@ namespace Modul4HW6.DataAccess.Migrations
                     b.Navigation("Songs");
                 });
 
-            modelBuilder.Entity("Modul4HW6.Entities.Ganre", b =>
+            modelBuilder.Entity("Modul4HW6.Entities.Genre", b =>
                 {
                     b.Navigation("Songs");
                 });

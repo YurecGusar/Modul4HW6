@@ -18,7 +18,7 @@ namespace Modul4HW6.DataAccess
 
         public DbSet<Artist> Artists { get; set; }
         public DbSet<ArtistsSongs> ArtistsSongs { get; set; }
-        public DbSet<Ganre> Ganres { get; set; }
+        public DbSet<Genre> Ganres { get; set; }
         public DbSet<Song> Songs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)

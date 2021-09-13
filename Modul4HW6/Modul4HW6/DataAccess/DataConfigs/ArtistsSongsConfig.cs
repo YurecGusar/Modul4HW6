@@ -21,8 +21,7 @@ namespace Modul4HW6.DataAccess.DataConfigs
             builder.HasOne(x => x.Artist)
                 .WithMany(x => x.Songs)
                 .HasForeignKey(x => x.ArtistsId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .IsRequired();
+                .OnDelete(DeleteBehavior.Cascade);
             builder.HasOne(x => x.Song)
                 .WithMany(x => x.Artists)
                 .HasForeignKey(x => x.SongsId)
@@ -100,6 +99,13 @@ namespace Modul4HW6.DataAccess.DataConfigs
                     ArtistsId = 3,
                     SongsId = 10
                 },
+
+                new ArtistsSongs()
+                {
+                    Id = 11,
+                    ArtistsId = null,
+                    SongsId = 11
+                }
             });
         }
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Modul4HW6.DataAccess.Migrations
+namespace Modul4HW6.Migrations
 {
     public partial class TestValues : Migration
     {
@@ -28,12 +28,12 @@ namespace Modul4HW6.DataAccess.Migrations
                     { 2, "Pop music" },
                     { 3, "Jazz" },
                     { 4, "Rock" },
-                    { 5, "Country" }
+                    { 5, "Folk songs" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Songs",
-                columns: new[] { "Id", "Duration", "GanreId", "ReleasedDate", "Title" },
+                columns: new[] { "Id", "Duration", "GenreId", "ReleasedDate", "Title" },
                 values: new object[,]
                 {
                     { 1, 2.54, 1, new DateTime(2016, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "One Dance" },
@@ -45,7 +45,8 @@ namespace Modul4HW6.DataAccess.Migrations
                     { 5, 4.1900000000000004, 2, new DateTime(1987, 8, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Bad" },
                     { 6, 4.5300000000000002, 2, new DateTime(1982, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), "Billie Jean" },
                     { 7, 2.54, 2, new DateTime(1989, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sacrifice" },
-                    { 8, 6.46, 2, new DateTime(1971, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tiny Dancer" }
+                    { 8, 6.46, 2, new DateTime(1971, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tiny Dancer" },
+                    { 11, 3.1600000000000001, 5, new DateTime(1971, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Banks of the Ohio" }
                 });
 
             migrationBuilder.InsertData(
@@ -62,7 +63,8 @@ namespace Modul4HW6.DataAccess.Migrations
                     { 5, 4, 5 },
                     { 6, 4, 6 },
                     { 7, 2, 7 },
-                    { 8, 2, 8 }
+                    { 8, 2, 8 },
+                    { 11, null, 11 }
                 });
         }
 
@@ -119,6 +121,11 @@ namespace Modul4HW6.DataAccess.Migrations
                 keyValue: 10);
 
             migrationBuilder.DeleteData(
+                table: "ArtistsSongs",
+                keyColumn: "Id",
+                keyValue: 11);
+
+            migrationBuilder.DeleteData(
                 table: "Ganres",
                 keyColumn: "Id",
                 keyValue: 3);
@@ -127,11 +134,6 @@ namespace Modul4HW6.DataAccess.Migrations
                 table: "Ganres",
                 keyColumn: "Id",
                 keyValue: 4);
-
-            migrationBuilder.DeleteData(
-                table: "Ganres",
-                keyColumn: "Id",
-                keyValue: 5);
 
             migrationBuilder.DeleteData(
                 table: "Artists",
@@ -209,6 +211,11 @@ namespace Modul4HW6.DataAccess.Migrations
                 keyValue: 10);
 
             migrationBuilder.DeleteData(
+                table: "Songs",
+                keyColumn: "Id",
+                keyValue: 11);
+
+            migrationBuilder.DeleteData(
                 table: "Ganres",
                 keyColumn: "Id",
                 keyValue: 1);
@@ -217,6 +224,11 @@ namespace Modul4HW6.DataAccess.Migrations
                 table: "Ganres",
                 keyColumn: "Id",
                 keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "Ganres",
+                keyColumn: "Id",
+                keyValue: 5);
         }
     }
 }

@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Modul4HW6.DataAccess;
 
-namespace Modul4HW6.DataAccess.Migrations
+namespace Modul4HW6.Migrations
 {
     [DbContext(typeof(Modul4HW6DBContext))]
-    [Migration("20210913135057_InitialCreate")]
+    [Migration("20210913162731_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,7 +61,7 @@ namespace Modul4HW6.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ArtistsId")
+                    b.Property<int?>("ArtistsId")
                         .HasColumnType("int");
 
                     b.Property<int>("SongsId")
@@ -76,7 +76,7 @@ namespace Modul4HW6.DataAccess.Migrations
                     b.ToTable("ArtistsSongs");
                 });
 
-            modelBuilder.Entity("Modul4HW6.Entities.Ganre", b =>
+            modelBuilder.Entity("Modul4HW6.Entities.Genre", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -103,7 +103,7 @@ namespace Modul4HW6.DataAccess.Migrations
                     b.Property<double>("Duration")
                         .HasColumnType("float");
 
-                    b.Property<int>("GanreId")
+                    b.Property<int>("GenreId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ReleasedDate")
@@ -116,7 +116,7 @@ namespace Modul4HW6.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GanreId");
+                    b.HasIndex("GenreId");
 
                     b.ToTable("Songs");
                 });
@@ -126,8 +126,7 @@ namespace Modul4HW6.DataAccess.Migrations
                     b.HasOne("Modul4HW6.Entities.Artist", "Artist")
                         .WithMany("Songs")
                         .HasForeignKey("ArtistsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Modul4HW6.Entities.Song", "Song")
                         .WithMany("Artists")
@@ -142,13 +141,13 @@ namespace Modul4HW6.DataAccess.Migrations
 
             modelBuilder.Entity("Modul4HW6.Entities.Song", b =>
                 {
-                    b.HasOne("Modul4HW6.Entities.Ganre", "Ganre")
+                    b.HasOne("Modul4HW6.Entities.Genre", "Genre")
                         .WithMany("Songs")
-                        .HasForeignKey("GanreId")
+                        .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Ganre");
+                    b.Navigation("Genre");
                 });
 
             modelBuilder.Entity("Modul4HW6.Entities.Artist", b =>
@@ -156,7 +155,7 @@ namespace Modul4HW6.DataAccess.Migrations
                     b.Navigation("Songs");
                 });
 
-            modelBuilder.Entity("Modul4HW6.Entities.Ganre", b =>
+            modelBuilder.Entity("Modul4HW6.Entities.Genre", b =>
                 {
                     b.Navigation("Songs");
                 });

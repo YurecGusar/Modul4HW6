@@ -10,9 +10,9 @@ using Modul4HW6.Entities;
 
 namespace Modul4HW6.DataAccess.DataConfigs
 {
-    public class GanreConfig : IEntityTypeConfiguration<Ganre>
+    public class GanreConfig : IEntityTypeConfiguration<Genre>
     {
-        public void Configure(EntityTypeBuilder<Ganre> builder)
+        public void Configure(EntityTypeBuilder<Genre> builder)
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id)
@@ -23,36 +23,36 @@ namespace Modul4HW6.DataAccess.DataConfigs
                 .HasMaxLength(300)
                 .IsRequired();
 
-            builder.HasData(new List<Ganre>()
+            builder.HasData(new List<Genre>()
             {
-                new Ganre()
+                new Genre()
                 {
                     Id = 1,
                     Title = "Rap"
                 },
 
-                new Ganre()
+                new Genre()
                 {
                     Id = 2,
                     Title = "Pop music"
                 },
 
-                new Ganre()
+                new Genre()
                 {
                     Id = 3,
                     Title = "Jazz"
                 },
 
-                new Ganre()
+                new Genre()
                 {
                     Id = 4,
                     Title = "Rock"
                 },
 
-                new Ganre()
+                new Genre()
                 {
                     Id = 5,
-                    Title = "Country"
+                    Title = "Folk songs"
                 }
             });
         }

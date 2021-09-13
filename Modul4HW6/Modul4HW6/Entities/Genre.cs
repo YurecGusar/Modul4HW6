@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modul4HW6.Entities
 {
-    public class Ganre
+    public class Genre
     {
         public virtual int Id { get; set; }
         public virtual string Title { get; set; }
