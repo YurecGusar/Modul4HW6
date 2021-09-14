@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Proxies;
 using Modul4HW6.DataAccess;
@@ -22,7 +23,7 @@ namespace Modul4HW6
                 .UseSqlServer(_config.ConnectionString);
             using var dbContext = new Modul4HW6DBContext(dbOptions.Options);
 
-            var query1 = dbContext.ArtistsSongs.Where(x => x.ArtistsId != null)
+            /*var query1 = dbContext.ArtistsSongs.Where(x => x.ArtistsId != null)
                 .Include(x => x.Song)
                     .ThenInclude(x => x.Genre)
                 .Include(x => x.Artist)
@@ -35,8 +36,24 @@ namespace Modul4HW6
 
             foreach (var item in query1)
             {
-                System.Console.WriteLine($"{item.ArtistName} | {item.SongName} | {item.Genre}");
-            }
+                Console.WriteLine($"{item.ArtistName} | {item.SongName} | {item.Genre}");
+            }*/
+
+            /*var youngArtist = dbContext.Artists
+                .OrderByDescending(x => x.DateOfBirth)
+                .Select(x => new { Name = x.Name, DateOfBirth = x.DateOfBirth })
+                .FirstOrDefault();
+            var query3Songs = dbContext.Songs
+                .Where(x => x.ReleasedDate < youngArtist.DateOfBirth)
+                .Select(x => x.Title)
+                .ToList();
+
+            Console.WriteLine($"Most young artist - {youngArtist.Name}   {youngArtist.DateOfBirth}");
+            Console.WriteLine("Songs older then artist:");
+            foreach (var item in query3Songs)
+            {
+                Console.WriteLine(item);
+            }*/
         }
     }
 }
