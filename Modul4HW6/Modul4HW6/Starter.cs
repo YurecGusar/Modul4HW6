@@ -23,7 +23,7 @@ namespace Modul4HW6
                 .UseSqlServer(_config.ConnectionString);
             using var dbContext = new Modul4HW6DBContext(dbOptions.Options);
 
-            /*var query1 = dbContext.ArtistsSongs.Where(x => x.ArtistsId != null)
+            var query1 = dbContext.ArtistsSongs.Where(x => x.ArtistsId != null)
                 .Include(x => x.Song)
                     .ThenInclude(x => x.Genre)
                 .Include(x => x.Artist)
@@ -34,12 +34,16 @@ namespace Modul4HW6
                     Genre = x.Song.Genre.Title
                 });
 
-            foreach (var item in query1)
-            {
-                Console.WriteLine($"{item.ArtistName} | {item.SongName} | {item.Genre}");
-            }*/
+            var query2 = dbContext.Ganres
+                .Include(x => x.Songs)
+                .Select(x => new
+                {
+                    Genre = x.Title,
+                    SongsCount = x.Songs.Count
+                })
+                .ToList();
 
-            /*var youngArtist = dbContext.Artists
+            var youngArtist = dbContext.Artists
                 .OrderByDescending(x => x.DateOfBirth)
                 .Select(x => new { Name = x.Name, DateOfBirth = x.DateOfBirth })
                 .FirstOrDefault();
@@ -47,13 +51,6 @@ namespace Modul4HW6
                 .Where(x => x.ReleasedDate < youngArtist.DateOfBirth)
                 .Select(x => x.Title)
                 .ToList();
-
-            Console.WriteLine($"Most young artist - {youngArtist.Name}   {youngArtist.DateOfBirth}");
-            Console.WriteLine("Songs older then artist:");
-            foreach (var item in query3Songs)
-            {
-                Console.WriteLine(item);
-            }*/
         }
     }
 }
